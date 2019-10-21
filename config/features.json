@@ -1,0 +1,116 @@
+{
+    "validation": {
+        "params": {
+            "keywords": "python"
+        },
+        "index": "semanticscholar"
+     },
+    "featureset": {
+        "features": [
+            {
+                "name": "title_score",
+                "params": ["keywords"],
+                "template": {
+                    "match": {
+                        "title": "{{keywords}}"
+                    }
+                }
+            },
+            {
+                "name": "abstract_score",
+                "params": ["keywords"],
+                "template": {
+                    "match": {
+                        "paperAbstract": "{{keywords}}"
+                    }
+                }
+            },
+            {
+                "name": "entities_score",
+                "params": ["keywords"],
+                "template": {
+                    "match": {
+                        "entities": "{{keywords}}"
+                    }
+                }
+            },
+            {
+                "name": "venue_score",
+                "params": ["keywords"],
+                "template": {
+                    "match": {
+                        "venue": "{{keywords}}"
+                    }
+                }
+            },
+            {
+                "name": "journal_score",
+                "params": ["keywords"],
+                "template": {
+                    "match": {
+                        "journalName": "{{keywords}}"
+                    }
+                }
+            },
+            {
+                "name": "authors_score",
+                "params": ["keywords"],
+                "template": {
+                    "match": {
+                        "author_names": "{{keywords}}"
+                    }
+                }
+            },
+            {
+                "name": "year",
+                "template": {
+                    "function_score": {
+                        "functions": [{
+                            "field_value_factor": {
+                                "field": "year",
+                                "missing": null
+                            }
+                        }],
+                        "query": {
+                            "match_all": {}
+                        }
+                    }
+                }
+            },
+            {
+                "name": "inCitations",
+                "template": {
+                    "function_score": {
+                        "functions": [{
+                            "field_value_factor": {
+                                "field": "inCitations",
+                                "missing": 0
+                            }
+                        }],
+                        "query": {
+                            "match_all": {}
+                        }
+                    }
+                }
+            },
+            {
+                "name": "outCitations",
+                "template": {
+                    "function_score": {
+                        "functions": [{
+                            "field_value_factor": {
+                                "field": "outCitations",
+                                "missing": 0
+                            }
+                        }],
+                        "query": {
+                            "match_all": {}
+                        }
+                    }
+                }
+            }
+            
+                    
+        ]
+    }
+}
