@@ -1,4 +1,6 @@
-# TREC Fair Ranking Track
+[![DOI](https://zenodo.org/badge/216515658.svg)](https://zenodo.org/badge/latestdoi/216515658)
+
+# TREC 2019 Fair Ranking Track
 
 - `config` contains configurations files
 - `semanticscholar` contains the raw data files from https://api.semanticscholar.org/corpus/. The files' ending was changed to `json.gz` with the `./src/etl/rename.py` script
